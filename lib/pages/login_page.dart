@@ -47,16 +47,18 @@ class _LoginPageState extends State<LoginPage> {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text("Login Page", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
-        backgroundColor: Colors.black,
-      ),
+      // appBar: AppBar(
+      //   centerTitle: true,
+      //   title: Text("Login Page", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+      //   backgroundColor: Colors.black,
+      // ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text("Login", style: TextStyle(fontSize: 50, fontWeight: FontWeight.w400),),
+            SizedBox(height: 50,),
             TextField(
               cursorColor: Colors.black,
               controller: _usernameController,
@@ -64,6 +66,9 @@ class _LoginPageState extends State<LoginPage> {
                 label: Text("Masukkan Username", style: TextStyle(color: Colors.black),), 
                 fillColor: Colors.black, 
                 hoverColor: Colors.black, 
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12)
+                )
               ),
             ), 
             SizedBox(height: 10,), 
@@ -75,6 +80,9 @@ class _LoginPageState extends State<LoginPage> {
                 label: Text("Masukkan Password", style: TextStyle(color: Colors.black),), 
                 fillColor: Colors.black,
                 hoverColor: Colors.black,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12), 
+                ),
                 suffixIcon: IconButton(
                   onPressed: (){
                     setState(() {
@@ -87,17 +95,21 @@ class _LoginPageState extends State<LoginPage> {
                 )
               ),
             ), 
-            SizedBox(height: 10,), 
+            SizedBox(height: 30,), 
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
+                
                 onPressed: (){
                   login();
                 }, 
                 style: ButtonStyle(
                   backgroundColor: WidgetStatePropertyAll(Colors.black)
                 ),
-                child: Text("Login", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),)
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Text("Login", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                )
               ),
             )
           ],
