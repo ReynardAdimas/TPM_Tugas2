@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tpm_tugas2/pages/jumlah_kurang.dart';
 import 'package:tpm_tugas2/pages/login_page.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: LoginPage()
+      home: JumlahKurang()
     );
   }
 }
