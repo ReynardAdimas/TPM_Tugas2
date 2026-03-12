@@ -48,7 +48,9 @@ class _LoginPageState extends State<LoginPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Login Page"),
+        centerTitle: true,
+        title: Text("Login Page", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+        backgroundColor: Colors.black,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -56,17 +58,23 @@ class _LoginPageState extends State<LoginPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
+              cursorColor: Colors.black,
               controller: _usernameController,
               decoration: InputDecoration(
-                label: Text("Masukkan Username")
+                label: Text("Masukkan Username", style: TextStyle(color: Colors.black),), 
+                fillColor: Colors.black, 
+                hoverColor: Colors.black, 
               ),
             ), 
             SizedBox(height: 10,), 
             TextField(
+              cursorColor: Colors.black,
               controller: _passwordController,
               obscureText: isPasswordHidden,
               decoration: InputDecoration(
-                label: Text("Masukkan Password"), 
+                label: Text("Masukkan Password", style: TextStyle(color: Colors.black),), 
+                fillColor: Colors.black,
+                hoverColor: Colors.black,
                 suffixIcon: IconButton(
                   onPressed: (){
                     setState(() {
@@ -80,11 +88,17 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ), 
             SizedBox(height: 10,), 
-            ElevatedButton(
-              onPressed: (){
-                login();
-              }, 
-              child: Text("Login")
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: (){
+                  login();
+                }, 
+                style: ButtonStyle(
+                  backgroundColor: WidgetStatePropertyAll(Colors.black)
+                ),
+                child: Text("Login", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),)
+              ),
             )
           ],
         ),
