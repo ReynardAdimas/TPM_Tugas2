@@ -62,7 +62,10 @@ class _LoginPageState extends State<LoginPage> {
                 label: Text("Masukkan Username", style: TextStyle(color: Colors.black),), 
                 fillColor: Colors.black, 
                 hoverColor: Colors.black, 
-                border: OutlineInputBorder(), 
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12)
+                ), 
+                
               ),
             ), 
             SizedBox(height: 10,), 
@@ -74,7 +77,9 @@ class _LoginPageState extends State<LoginPage> {
                 label: Text("Masukkan Password", style: TextStyle(color: Colors.black),), 
                 fillColor: Colors.black,
                 hoverColor: Colors.black,
-                border: OutlineInputBorder(),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12)
+                ),
                 suffixIcon: IconButton(
                   onPressed: (){
                     setState(() {

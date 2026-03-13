@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tpm_tugas2/pages/login_page.dart';
 
 class Menu extends StatefulWidget {
   final String username;
@@ -21,7 +22,14 @@ class _MenuState extends State<Menu> {
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: (){}, 
+            onPressed: (){
+              Navigator.pushAndRemoveUntil(
+                context, MaterialPageRoute(
+                  builder: (context) => LoginPage(),
+                  ), 
+                  (Route<dynamic> route) => false, 
+                );
+            }, 
             icon: Icon(Icons.logout, color: Colors.white,)
           )
         ],
