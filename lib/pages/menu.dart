@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tpm_tugas2/pages/jumlah_kurang.dart';
 import 'package:tpm_tugas2/pages/login_page.dart';
 
 class Menu extends StatefulWidget {
@@ -67,7 +68,9 @@ class _MenuState extends State<Menu> {
                             padding: const EdgeInsets.only(bottom: 16.0), 
                             child: InkWell(
                               onTap: () {
-                                print('Menu diklik');
+                                if (menus[index] == 'Penjumlahan dan Pengurangan Angka') {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => JumlahKurang()));
+                                }
                               },
                               borderRadius: BorderRadius.circular(16.0),
                               child: Container(
