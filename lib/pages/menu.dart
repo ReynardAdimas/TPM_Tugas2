@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tpm_tugas2/pages/jumlah_kurang.dart';
 import 'package:tpm_tugas2/pages/login_page.dart';
+import 'package:tpm_tugas2/pages/stopwatch_screen.dart';
 
 class Menu extends StatefulWidget {
   final String username;
@@ -12,6 +13,22 @@ class Menu extends StatefulWidget {
 
 class _MenuState extends State<Menu> { 
   final List<String> menus = ['Data Kelompok', 'Penjumlahan dan Pengurangan Angka', 'Cek paritas dan prima bilangan', 'Stopwatch', 'Hitung Luas dan Volume Piramid'];
+
+  void pilihMenu(int index) {
+    if(menus[index] == 'Data Kelompok') {
+      //
+    } 
+    else if (menus[index] == 'Penjumlahan dan Pengurangan Angka') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => JumlahKurang()));
+    } else if (menus[index] == 'Cek paritas dan prima bilangan') {
+
+    } else if (menus[index] == 'Stopwatch') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => StopwatchScreen()));
+
+    } else {
+
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,9 +85,7 @@ class _MenuState extends State<Menu> {
                             padding: const EdgeInsets.only(bottom: 16.0), 
                             child: InkWell(
                               onTap: () {
-                                if (menus[index] == 'Penjumlahan dan Pengurangan Angka') {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => JumlahKurang()));
-                                }
+                                pilihMenu(index);
                               },
                               borderRadius: BorderRadius.circular(16.0),
                               child: Container(

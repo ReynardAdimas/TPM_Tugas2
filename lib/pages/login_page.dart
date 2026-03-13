@@ -65,6 +65,9 @@ class _LoginPageState extends State<LoginPage> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12)
                 ), 
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.grey)
+                )
                 
               ),
             ), 
@@ -79,6 +82,9 @@ class _LoginPageState extends State<LoginPage> {
                 hoverColor: Colors.black,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12)
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.grey)
                 ),
                 suffixIcon: IconButton(
                   onPressed: (){

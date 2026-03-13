@@ -86,6 +86,12 @@ class _StopwatchScreenState extends State<StopwatchScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF1D1D1D),
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF1D1D1D),
+        iconTheme: IconThemeData(
+          color: Colors.white70
+        ),
+      ),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
