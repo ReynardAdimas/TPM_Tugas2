@@ -19,9 +19,13 @@ class _StopwatchScreenState extends State<StopwatchScreen> {
   void _startTimer() {
     _timer?.cancel();
     _timer = Timer.periodic(const Duration(milliseconds: 30), (timer) {
-      setState(() {
-        
-      }); 
+      if (_stopwatch.elapsed.inHours >= 24) {
+        _stopAndResetTimer();
+      } else {
+        setState(() {
+          
+        });
+      }
     }); 
     _stopwatch.start();
   } 
@@ -62,14 +66,15 @@ class _StopwatchScreenState extends State<StopwatchScreen> {
   } 
 
   String _formatTime(Duration duration, {bool isMainTime= false}) {
+    String hours = (duration.inHours).toString().padLeft(2,'0');
     String minutes = (duration.inMinutes % 60).toString().padLeft(2, '0'); 
     String seconds = (duration.inSeconds % 60).toString().padLeft(2, '0'); 
     String hundredths = ((duration.inMilliseconds % 1000) ~/ 10).toString().padLeft(2, '0'); 
 
     if (isMainTime && !_stopwatch.isRunning && _stopwatch.elapsedTicks == 0) {
-      return "$minutes:$seconds.0";
+      return "$hours:$minutes:$seconds.0";
     } 
-    return "$minutes:$seconds.$hundredths";
+    return "$hours:$minutes:$seconds.$hundredths";
   }
 
   @override 
