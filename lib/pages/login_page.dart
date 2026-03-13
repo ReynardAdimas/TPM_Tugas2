@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tpm_tugas2/pages/menu.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -19,6 +20,7 @@ class _LoginPageState extends State<LoginPage> {
       String pwd = _passwordController.text; 
 
       if(usn == "subagus" && pwd == "kriptogaasik") {
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Menu(username: usn)));
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text("Login Berhasil"),

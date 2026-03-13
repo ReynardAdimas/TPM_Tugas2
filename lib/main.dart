@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tpm_tugas2/pages/login_page.dart';
+import 'package:tpm_tugas2/pages/menu.dart';
 
 void main() {
   runApp(const MyApp());
