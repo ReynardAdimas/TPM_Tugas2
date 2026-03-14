@@ -32,7 +32,10 @@ class _PiramidScreenState extends State<PiramidPage> {
   void errorHandling() {
     if (sisiC.text.isEmpty || tinggiC.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Alas dan Tinggi harus diisi!!!"))
+        const SnackBar(
+          content: Text("Alas dan Tinggi harus diisi"),
+          backgroundColor: Colors.red,
+        ),
       );
       return;
     }
@@ -42,14 +45,20 @@ class _PiramidScreenState extends State<PiramidPage> {
 
     if (s == null || t == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Input Harus Angka!!!"))
+        const SnackBar(
+          content: Text("Input Harus Angka"),
+          backgroundColor: Colors.red, 
+          ),
       );
       return;
     }
 
     if (s <= 0 || t <= 0) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Nilai Harus Lebih Dari 0!!!"))
+        const SnackBar(
+          content: Text("Nilai Harus Lebih Dari 0"),
+          backgroundColor: Colors.red,
+          ),
       );
       return;
     }
