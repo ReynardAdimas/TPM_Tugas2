@@ -59,6 +59,9 @@ class _BilanganPageState extends State<BilanganPage> {
       appBar: AppBar(
         title: Text("Bilangan", style: TextStyle(color: Colors.white),),
         backgroundColor: const Color.fromARGB(255, 8, 8, 8),
+        iconTheme: IconThemeData(
+          color: Colors.white
+        ),
       ),
       body: Padding(
         padding: EdgeInsets.all(20),

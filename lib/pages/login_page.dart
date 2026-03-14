@@ -19,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
       String usn = _usernameController.text; 
       String pwd = _passwordController.text; 
 
-      if(usn == "subagus" && pwd == "kriptogaasik") {
+      if(usn == "mobile" && pwd == "kriptogaasik") {
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Menu(username: usn)));
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
