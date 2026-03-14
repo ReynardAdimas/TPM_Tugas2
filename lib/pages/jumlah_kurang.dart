@@ -114,11 +114,14 @@ class _JumlahKurangState extends State<JumlahKurang> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text("Penjumlah dan Pengurangan"),
+        title: Text("Penjumlah dan Pengurangan", style: TextStyle(color: Colors.grey[400]),),
         centerTitle: true,
-        backgroundColor: Colors.grey[400],
+        backgroundColor: Colors.black,
+        iconTheme: IconThemeData(
+          color: Colors.white
+        ),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -129,7 +132,7 @@ class _JumlahKurangState extends State<JumlahKurang> {
               padding: const EdgeInsets.all(32.0),
               child: Text(
                 _result.toString(), 
-                style: TextStyle(fontSize: 60),
+                style: TextStyle(fontSize: 60, color: Colors.white),
               ),
             )
           ), 
@@ -149,8 +152,8 @@ class _JumlahKurangState extends State<JumlahKurang> {
                     pressedButton(buttons[index]);
                   }, 
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: (buttons[index] == 'C' || buttons[index] == '=' || buttons[index] == 'DEL') ? Colors.orange : Colors.white,
-                    foregroundColor: Colors.black
+                    backgroundColor: (buttons[index] == 'C' || buttons[index] == '=' || buttons[index] == 'DEL' || buttons[index] == '+' || buttons[index] == '-') ? Colors.orange : Colors.grey,
+                    foregroundColor: Colors.white
                   ),
                   child: Text(
                     buttons[index], 
