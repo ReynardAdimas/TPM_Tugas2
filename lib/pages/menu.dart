@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tpm_tugas2/pages/bilangan_page.dart';
 import 'package:tpm_tugas2/pages/jumlah_kurang.dart';
 import 'package:tpm_tugas2/pages/jumlah_total_angka_page.dart';
 import 'package:tpm_tugas2/pages/kelompok_page.dart';
@@ -24,7 +25,7 @@ class _MenuState extends State<Menu> {
     else if (menus[index] == 'Penjumlahan dan Pengurangan Angka') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => JumlahKurang()));
     } else if (menus[index] == 'Cek paritas dan prima bilangan') {
-      // 
+      Navigator.push(context, MaterialPageRoute(builder: (context) => BilanganPage()));
     } else if (menus[index] == 'Stopwatch') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => StopwatchScreen()));
 
