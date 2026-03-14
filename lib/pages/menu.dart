@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tpm_tugas2/pages/jumlah_kurang.dart';
+import 'package:tpm_tugas2/pages/kelompok_page.dart';
 import 'package:tpm_tugas2/pages/login_page.dart';
 import 'package:tpm_tugas2/pages/piramid_page.dart';
 import 'package:tpm_tugas2/pages/stopwatch_screen.dart';
@@ -17,7 +18,7 @@ class _MenuState extends State<Menu> {
 
   void pilihMenu(int index) {
     if(menus[index] == 'Data Kelompok') {
-      //
+      Navigator.push(context, MaterialPageRoute(builder: (context) => KelompokPage()));
     } 
     else if (menus[index] == 'Penjumlahan dan Pengurangan Angka') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => JumlahKurang()));
