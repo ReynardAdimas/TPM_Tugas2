@@ -23,7 +23,7 @@ class _MenuState extends State<Menu> {
     else if (menus[index] == 'Penjumlahan dan Pengurangan Angka') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => JumlahKurang()));
     } else if (menus[index] == 'Cek paritas dan prima bilangan') {
-
+      // 
     } else if (menus[index] == 'Stopwatch') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => StopwatchScreen()));
 

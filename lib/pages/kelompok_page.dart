@@ -7,6 +7,9 @@ class KelompokPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.white70
+        ),
         backgroundColor: Colors.black,
         centerTitle: true,
         title: const Text(
