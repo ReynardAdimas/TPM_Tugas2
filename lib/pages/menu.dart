@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tpm_tugas2/pages/jumlah_kurang.dart';
+import 'package:tpm_tugas2/pages/jumlah_total_angka_page.dart';
 import 'package:tpm_tugas2/pages/kelompok_page.dart';
 import 'package:tpm_tugas2/pages/login_page.dart';
 import 'package:tpm_tugas2/pages/piramid_page.dart';
@@ -14,7 +15,7 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> { 
-  final List<String> menus = ['Data Kelompok', 'Penjumlahan dan Pengurangan Angka', 'Cek paritas dan prima bilangan', 'Stopwatch', 'Hitung Luas dan Volume Piramid', 'Jumlah Total Angka dalam field'];
+  final List<String> menus = ['Data Kelompok', 'Penjumlahan dan Pengurangan Angka', 'Cek paritas dan prima bilangan', 'Stopwatch', 'Hitung Luas dan Volume Piramid', 'Jumlah Total Angka'];
 
   void pilihMenu(int index) {
     if(menus[index] == 'Data Kelompok') {
@@ -27,8 +28,8 @@ class _MenuState extends State<Menu> {
     } else if (menus[index] == 'Stopwatch') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => StopwatchScreen()));
 
-    } else if (menus[index] == 'Stopwatch') {
-      
+    } else if (menus[index] == 'Jumlah Total Angka') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => JumlahTotalAngkaPage()));
     }
     else {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PiramidPage()));
