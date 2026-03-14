@@ -68,7 +68,6 @@ class _LoginPageState extends State<LoginPage> {
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.grey)
                 )
-                
               ),
             ), 
             SizedBox(height: 10,), 
