@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tpm_tugas2/pages/kelompok.dart';
+import 'package:tpm_tugas2/pages/kelompok_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
       debugShowCheckedModeBanner: false,
-      home: KelompokPage(),
+      home: KelompokPage()
     );
   }
 }
