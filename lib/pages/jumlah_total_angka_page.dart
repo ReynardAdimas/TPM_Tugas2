@@ -69,6 +69,9 @@ class _JumlahTotalAngkaPageState extends State<JumlahTotalAngkaPage> {
             fontWeight: FontWeight.bold,
           ),
         ),
+        iconTheme: IconThemeData(
+          color: Colors.white
+        ),
       ),
 
       body: Padding(

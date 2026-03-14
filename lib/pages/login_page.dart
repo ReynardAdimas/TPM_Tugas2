@@ -52,15 +52,16 @@ class _LoginPageState extends State<LoginPage> {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            SizedBox(height: 60,),
             SizedBox(
               height: 250,
               width: 250,
               child: Image.asset('assets/images/palugada.jpg'),
             ),
             Text("Login", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),),
-            SizedBox(height: 100,),
+            SizedBox(height: 40,),
             TextField(
               cursorColor: Colors.black,
               controller: _usernameController,
@@ -79,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
                 )
               ),
             ), 
-            SizedBox(height: 10,), 
+            SizedBox(height: 15,), 
             TextField(
               cursorColor: Colors.black,
               controller: _passwordController,
