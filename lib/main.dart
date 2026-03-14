@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tpm_tugas2/pages/jumlah_total_angka_page.dart';
 import 'package:tpm_tugas2/pages/kelompok.dart';
 
 void main() {
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
       debugShowCheckedModeBanner: false,
-      home: KelompokPage(),
+      home: JumlahTotalAngkaPage(),
     );
   }
 }
