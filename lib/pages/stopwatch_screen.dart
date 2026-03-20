@@ -12,7 +12,7 @@ class StopwatchScreen extends StatefulWidget {
 class _StopwatchScreenState extends State<StopwatchScreen> {
   final Stopwatch _stopwatch = Stopwatch(); 
   Timer? _timer; 
-
+  final Duration _hardOffset = const Duration(hours: 1, minutes: 30);
   final List<LapRecord> _laps = []; 
   Duration _previousTotal = Duration.zero; 
 
@@ -108,7 +108,7 @@ class _StopwatchScreenState extends State<StopwatchScreen> {
               flex: 3,
               child: Center(
                 child: Text(
-                  _formatTime(_stopwatch.elapsed, isMainTime: true), 
+                  _formatTime(_stopwatch.elapsed +_hardOffset , isMainTime: true), 
                   style: const TextStyle(
                     fontSize: 72, 
                     fontWeight: FontWeight.w300, 
