@@ -135,7 +135,10 @@ class _JumlahKurangState extends State<JumlahKurang> {
                 children: [
                   Text(
                     _result.toString(), 
-                    style: TextStyle(fontSize: 60),
+                    style: TextStyle(
+                      fontSize: 60, 
+                      color: Colors.white
+                    ),
                   )
                 ],
               ),
