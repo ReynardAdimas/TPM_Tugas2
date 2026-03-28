@@ -49,85 +49,87 @@ class _LoginPageState extends State<LoginPage> {
     }
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(height: 60,),
-            SizedBox(
-              height: 250,
-              width: 250,
-              child: Image.asset('assets/images/palugada.jpg'),
-            ),
-            Text("Login", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),),
-            SizedBox(height: 40,),
-            TextField(
-              cursorColor: Colors.black,
-              controller: _usernameController,
-              style: TextStyle(
-                color: Colors.white
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(height: 60,),
+              SizedBox(
+                height: 250,
+                width: 250,
+                child: Image.asset('assets/images/palugada.jpg'),
               ),
-              decoration: InputDecoration(
-                label: Text("Masukkan Username", style: TextStyle(color: Colors.white),), 
-                fillColor: Colors.white, 
-                hoverColor: Colors.black, 
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12)
-                ), 
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey)
-                )
-              ),
-            ), 
-            SizedBox(height: 15,), 
-            TextField(
-              cursorColor: Colors.black,
-              controller: _passwordController,
-              obscureText: isPasswordHidden,
-              style: TextStyle(
-                color: Colors.white
-              ),
-              decoration: InputDecoration(
-                label: Text("Masukkan Password", style: TextStyle(color: Colors.white),), 
-                fillColor: Colors.black,
-                hoverColor: Colors.black,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12)
+              Text("Login", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),),
+              SizedBox(height: 40,),
+              TextField(
+                cursorColor: Colors.black,
+                controller: _usernameController,
+                style: TextStyle(
+                  color: Colors.white
                 ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey)
-                ),
-                suffixIcon: IconButton(
-                  onPressed: (){
-                    setState(() {
-                      isPasswordHidden = !isPasswordHidden;
-                    });
-                  }, 
-                  icon: Icon(
-                    isPasswordHidden ? Icons.visibility_off : Icons.visibility
+                decoration: InputDecoration(
+                  label: Text("Masukkan Username", style: TextStyle(color: Colors.white),), 
+                  fillColor: Colors.white, 
+                  hoverColor: Colors.black, 
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12)
+                  ), 
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey)
                   )
-                )
-              ),
-            ), 
-            SizedBox(height: 30,), 
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                
-                onPressed: (){
-                  login();
-                }, 
-                style: ButtonStyle(
-                  backgroundColor: WidgetStatePropertyAll(Colors.white)
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Text("Login", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
-                )
-              ),
-            )
-          ],
+              ), 
+              SizedBox(height: 15,), 
+              TextField(
+                cursorColor: Colors.black,
+                controller: _passwordController,
+                obscureText: isPasswordHidden,
+                style: TextStyle(
+                  color: Colors.white
+                ),
+                decoration: InputDecoration(
+                  label: Text("Masukkan Password", style: TextStyle(color: Colors.white),), 
+                  fillColor: Colors.black,
+                  hoverColor: Colors.black,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12)
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey)
+                  ),
+                  suffixIcon: IconButton(
+                    onPressed: (){
+                      setState(() {
+                        isPasswordHidden = !isPasswordHidden;
+                      });
+                    }, 
+                    icon: Icon(
+                      isPasswordHidden ? Icons.visibility_off : Icons.visibility
+                    )
+                  )
+                ),
+              ), 
+              SizedBox(height: 30,), 
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  
+                  onPressed: (){
+                    login();
+                  }, 
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStatePropertyAll(Colors.white)
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Text("Login", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
+                  )
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
