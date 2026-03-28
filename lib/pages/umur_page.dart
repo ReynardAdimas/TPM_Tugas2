@@ -86,7 +86,7 @@ class _UmurPageState extends State<UmurPage> {
         backgroundColor: Colors.black,
         centerTitle: true,
         title: const Text(
-          "Hitung Umur (Real-Time)",
+          "Cek Umur",
           style: TextStyle(
             color: Colors.white,
             fontSize: 26,

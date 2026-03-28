@@ -93,7 +93,7 @@ class _WetonConverterScreenState extends State<WetonConverterScreen> {
       appBar: AppBar(
          backgroundColor: const Color(0xFF121212),
          title: Text(
-          'Konversi Tanggal', 
+          'Cek Weton', 
           style: TextStyle(
             color: Colors.white, 
             fontSize: 26, 

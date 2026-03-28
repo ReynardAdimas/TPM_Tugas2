@@ -18,7 +18,7 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> { 
-  final List<String> menus = ['Data Kelompok', 'Penjumlahan dan Pengurangan Angka', 'Cek paritas dan prima bilangan', 'Stopwatch', 'Hitung Luas dan Volume Piramid', 'Jumlah Total Angka', 'Cek Umur', 'Cek Hari & Weton'];
+  final List<String> menus = ['Data Kelompok', 'Penjumlahan dan Pengurangan Angka', 'Cek paritas dan prima bilangan', 'Stopwatch', 'Kalkulator Piramid', 'Jumlah Total Angka', 'Cek Umur', 'Cek Hari'];
 
   void pilihMenu(int index) {
     if(menus[index] == 'Data Kelompok') {
@@ -30,14 +30,13 @@ class _MenuState extends State<Menu> {
       Navigator.push(context, MaterialPageRoute(builder: (context) => BilanganPage()));
     } else if (menus[index] == 'Stopwatch') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => StopwatchScreen()));
-
     } else if (menus[index] == 'Jumlah Total Angka') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => JumlahTotalAngkaPage()));
     }
     else if (menus[index] == 'Cek Umur') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => UmurPage()));
     }
-    else if (menus[index] == 'Cek Hari & Weton') {
+    else if (menus[index] == 'Cek Hari') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => WetonConverterScreen()));
     }
     else {

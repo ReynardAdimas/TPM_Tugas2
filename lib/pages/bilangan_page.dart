@@ -14,7 +14,6 @@ class _BilanganPageState extends State<BilanganPage> {
 
     String input = angka.text.replaceAll(",", ".");
 
-    // 👉 CEK DESIMAL (RASIONAL)
     if (input.contains(".")) {
       double? n = double.tryParse(input);
 
@@ -31,7 +30,6 @@ class _BilanganPageState extends State<BilanganPage> {
       return;
     }
 
-    // 👉 PAKAI BIGINT
     BigInt angkaBesar;
 
     try {
@@ -43,7 +41,6 @@ class _BilanganPageState extends State<BilanganPage> {
       return;
     }
 
-    // 👉 GANJIL / GENAP (CEPAT)
     String ganjilGenap =
         (angkaBesar % BigInt.from(2) == BigInt.zero) ? "Genap" : "Ganjil";
 
@@ -54,7 +51,6 @@ class _BilanganPageState extends State<BilanganPage> {
 
     await Future.delayed(Duration(milliseconds: 100));
 
-    // 👉 CEK PRIMA TANPA FREEZE UI
     bool isPrima = true;
 
     if (angkaBesar <= BigInt.one) {
@@ -140,7 +136,6 @@ class _BilanganPageState extends State<BilanganPage> {
                 color: Colors.black,
               ),
             )
-
           ],
         ),
       ),
