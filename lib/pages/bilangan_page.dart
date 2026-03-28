@@ -12,9 +12,11 @@ class _BilanganPageState extends State<BilanganPage> {
 
   void cekBilangan() {
 
-    int? n = int.tryParse(angka.text);
+    // ganti koma jadi titik
+    String input = angka.text.replaceAll(",", ".");
+    double? n = double.tryParse(input);
 
-    // error handling kalau bukan angka
+    // error handling
     if (n == null) {
       setState(() {
         hasil = "Input harus berupa angka!";
@@ -22,11 +24,21 @@ class _BilanganPageState extends State<BilanganPage> {
       return;
     }
 
+    // cek desimal (rasional)
+    if (input.contains(".")) {
+      setState(() {
+        hasil = "Angka $input merupakan bilangan rasional";
+      });
+      return;
+    }
+
+    int angkaBulat = n.toInt();
+
     String ganjilGenap;
     String prima;
 
     // cek ganjil genap
-    if (n % 2 == 0) {
+    if (angkaBulat % 2 == 0) {
       ganjilGenap = "Genap";
     } else {
       ganjilGenap = "Ganjil";
@@ -35,8 +47,8 @@ class _BilanganPageState extends State<BilanganPage> {
     // cek prima
     int pembagi = 0;
 
-    for (int i = 1; i <= n; i++) {
-      if (n % i == 0) {
+    for (int i = 1; i <= angkaBulat; i++) {
+      if (angkaBulat % i == 0) {
         pembagi++;
       }
     }
@@ -48,20 +60,21 @@ class _BilanganPageState extends State<BilanganPage> {
     }
 
     setState(() {
-      hasil = "Angka $n adalah $ganjilGenap dan $prima";
+      hasil = "Angka $angkaBulat adalah $ganjilGenap dan $prima";
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 254, 254, 254), // monokrom background
+      backgroundColor: Color.fromARGB(255, 254, 254, 254),
       appBar: AppBar(
-        title: Text("Bilangan", style: TextStyle(color: Colors.white),),
-        backgroundColor: const Color.fromARGB(255, 8, 8, 8),
-        iconTheme: IconThemeData(
-          color: Colors.white
+        title: Text(
+          "Bilangan",
+          style: TextStyle(color: Colors.white),
         ),
+        backgroundColor: Color.fromARGB(255, 8, 8, 8),
+        iconTheme: IconThemeData(color: Colors.white),
       ),
       body: Padding(
         padding: EdgeInsets.all(20),
@@ -71,19 +84,19 @@ class _BilanganPageState extends State<BilanganPage> {
             TextField(
               controller: angka,
               keyboardType: TextInputType.number,
+              cursorColor: Colors.black,
               decoration: InputDecoration(
                 labelText: "Masukkan Angka",
                 labelStyle: TextStyle(color: Colors.black),
                 border: OutlineInputBorder(),
                 filled: true,
                 fillColor: Colors.white,
-
                 enabledBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.grey),
-                     ),
-                 focusedBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.black),
-                 ),
+                  borderSide: BorderSide(color: Colors.grey),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black),
+                ),
               ),
             ),
 
@@ -93,8 +106,12 @@ class _BilanganPageState extends State<BilanganPage> {
               onPressed: cekBilangan,
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.black,
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 12),
               ),
-              child: Text("Cek Bilangan", style: TextStyle(color: Colors.white),),
+              child: Text(
+                "Cek Bilangan",
+                style: TextStyle(color: Colors.white),
+              ),
             ),
 
             SizedBox(height: 20),
