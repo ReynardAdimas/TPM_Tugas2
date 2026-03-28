@@ -12,7 +12,7 @@ class _BilanganPageState extends State<BilanganPage> {
 
   void cekBilangan() {
 
-    // ganti koma jadi titik
+    // ubah koma jadi titik
     String input = angka.text.replaceAll(",", ".");
     double? n = double.tryParse(input);
 
@@ -24,7 +24,7 @@ class _BilanganPageState extends State<BilanganPage> {
       return;
     }
 
-    // cek desimal (rasional)
+    // cek desimal → rasional
     if (input.contains(".")) {
       setState(() {
         hasil = "Angka $input merupakan bilangan rasional";
@@ -44,16 +44,21 @@ class _BilanganPageState extends State<BilanganPage> {
       ganjilGenap = "Ganjil";
     }
 
-    // cek prima
-    int pembagi = 0;
+    // 🔥 CEK PRIMA (OPTIMASI √n)
+    bool isPrima = true;
 
-    for (int i = 1; i <= angkaBulat; i++) {
-      if (angkaBulat % i == 0) {
-        pembagi++;
+    if (angkaBulat <= 1) {
+      isPrima = false;
+    } else {
+      for (int i = 2; i * i <= angkaBulat; i++) {
+        if (angkaBulat % i == 0) {
+          isPrima = false;
+          break;
+        }
       }
     }
 
-    if (pembagi == 2) {
+    if (isPrima) {
       prima = "Bilangan Prima";
     } else {
       prima = "Bukan Bilangan Prima";
@@ -91,9 +96,11 @@ class _BilanganPageState extends State<BilanganPage> {
                 border: OutlineInputBorder(),
                 filled: true,
                 fillColor: Colors.white,
+
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.grey),
                 ),
+
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black),
                 ),
