@@ -25,23 +25,28 @@ class _JumlahTotalAngkaPageState extends State<JumlahTotalAngkaPage> {
 
     double hasil = 0;
 
-    try {
+    for (var item in angkaList) {
 
-      for (var angka in angkaList) {
+      if (item.isEmpty) continue;
 
-        if (angka.isEmpty) continue;
+      // coba parse langsung (angka biasa & desimal)
+      double? nilai = double.tryParse(item);
 
-        hasil += double.parse(angka);
-
+      if (nilai != null) {
+        hasil += nilai;
+      } else {
+        // ambil digit satu-satu
+        for (int i = 0; i < item.length; i++) {
+          if (RegExp(r'[0-9]').hasMatch(item[i])) {
+            hasil += double.parse(item[i]);
+          }
+        }
       }
-
-      setState(() {
-        total = hasil;
-      });
-
-    } catch (e) {
-      tampilkanError("Input hanya boleh berisi angka");
     }
+
+    setState(() {
+      total = hasil;
+    });
   }
 
   void tampilkanError(String pesan) {
@@ -69,87 +74,119 @@ class _JumlahTotalAngkaPageState extends State<JumlahTotalAngkaPage> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        iconTheme: IconThemeData(
-          color: Colors.white
-        ),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
 
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          children: [
+      body: Stack(
+        children: [
 
-            const SizedBox(height: 20),
-
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(20),
-
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.white, width: 2),
-                borderRadius: BorderRadius.circular(15),
-              ),
-
-              child: Column(
-                children: [
-
-                  const Text(
-                    "Masukkan angka (pisahkan dengan spasi)",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                    ),
-                  ),
-
-                  const SizedBox(height: 15),
-
-                  TextField(
-                    controller: angkaController,
-                    style: const TextStyle(color: Colors.white),
-
-                    decoration: InputDecoration(
-                      hintText: "Contoh: 1 2.5 3 4.7",
-                      hintStyle: const TextStyle(color: Colors.grey),
-
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.white),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.white),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                  ),
-
-                  const SizedBox(height: 20),
-
-                  ElevatedButton(
-                    onPressed: hitungTotal,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      foregroundColor: Colors.black,
-                    ),
-                    child: const Text("Hitung"),
-                  ),
-
-                  const SizedBox(height: 20),
-
-                  Text(
-                    "Total: $total",
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  )
-
-                ],
+          /// BACKGROUND +
+          Positioned(
+            top: 80,
+            left: 30,
+            child: Text(
+              "+",
+              style: TextStyle(
+                fontSize: 120,
+                color: Colors.white.withOpacity(0.05),
+                fontWeight: FontWeight.bold,
               ),
             ),
-          ],
-        ),
+          ),
+
+          /// BACKGROUND -
+          Positioned(
+            bottom: 120,
+            right: 40,
+            child: Text(
+              "-",
+              style: TextStyle(
+                fontSize: 120,
+                color: Colors.white.withOpacity(0.05),
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+
+          /// CONTENT
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              children: [
+
+                const SizedBox(height: 20),
+
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(20),
+
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white, width: 2),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+
+                  child: Column(
+                    children: [
+
+                      const Text(
+                        "Masukkan angka (pisahkan dengan spasi)",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                        ),
+                      ),
+
+                      const SizedBox(height: 15),
+
+                      TextField(
+                        controller: angkaController,
+                        style: const TextStyle(color: Colors.white),
+
+                        decoration: InputDecoration(
+                          hintText: "Contoh: abc 1 2.5 xyz 3",
+                          hintStyle: const TextStyle(color: Colors.grey),
+
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ),
+
+                      const SizedBox(height: 20),
+
+                      ElevatedButton(
+                        onPressed: hitungTotal,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          foregroundColor: Colors.black,
+                        ),
+                        child: const Text("Hitung"),
+                      ),
+
+                      const SizedBox(height: 20),
+
+                      Text(
+                        "Total: $total",
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
