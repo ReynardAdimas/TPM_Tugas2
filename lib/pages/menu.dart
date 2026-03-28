@@ -6,6 +6,7 @@ import 'package:tpm_tugas2/pages/kelompok_page.dart';
 import 'package:tpm_tugas2/pages/login_page.dart';
 import 'package:tpm_tugas2/pages/piramid_page.dart';
 import 'package:tpm_tugas2/pages/stopwatch_screen.dart';
+import 'package:tpm_tugas2/pages/weton.dart';
 
 class Menu extends StatefulWidget {
   final String username;
