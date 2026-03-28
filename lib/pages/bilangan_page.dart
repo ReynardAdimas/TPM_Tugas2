@@ -10,62 +10,72 @@ class _BilanganPageState extends State<BilanganPage> {
   TextEditingController angka = TextEditingController();
   String hasil = "";
 
-  void cekBilangan() {
+  void cekBilangan() async {
 
-    // ubah koma jadi titik
     String input = angka.text.replaceAll(",", ".");
-    double? n = double.tryParse(input);
 
-    // error handling
-    if (n == null) {
-      setState(() {
-        hasil = "Input harus berupa angka!";
-      });
-      return;
-    }
-
-    // cek desimal → rasional
+    // 👉 CEK DESIMAL (RASIONAL)
     if (input.contains(".")) {
+      double? n = double.tryParse(input);
+
+      if (n == null) {
+        setState(() {
+          hasil = "Input harus berupa angka!";
+        });
+        return;
+      }
+
       setState(() {
         hasil = "Angka $input merupakan bilangan rasional";
       });
       return;
     }
 
-    int angkaBulat = n.toInt();
+    // 👉 PAKAI BIGINT
+    BigInt angkaBesar;
 
-    String ganjilGenap;
-    String prima;
-
-    // cek ganjil genap
-    if (angkaBulat % 2 == 0) {
-      ganjilGenap = "Genap";
-    } else {
-      ganjilGenap = "Ganjil";
+    try {
+      angkaBesar = BigInt.parse(input);
+    } catch (e) {
+      setState(() {
+        hasil = "Input harus berupa angka!";
+      });
+      return;
     }
 
-    // 🔥 CEK PRIMA (OPTIMASI √n)
+    // 👉 GANJIL / GENAP (CEPAT)
+    String ganjilGenap =
+        (angkaBesar % BigInt.from(2) == BigInt.zero) ? "Genap" : "Ganjil";
+
+    // tampilkan dulu biar UI ga kosong
+    setState(() {
+      hasil = "Angka $input adalah $ganjilGenap, sedang mengecek prima...";
+    });
+
+    await Future.delayed(Duration(milliseconds: 100));
+
+    // 👉 CEK PRIMA TANPA FREEZE UI
     bool isPrima = true;
 
-    if (angkaBulat <= 1) {
+    if (angkaBesar <= BigInt.one) {
       isPrima = false;
     } else {
-      for (int i = 2; i * i <= angkaBulat; i++) {
-        if (angkaBulat % i == 0) {
+      BigInt i = BigInt.from(2);
+
+      while (i * i <= angkaBesar) {
+        if (angkaBesar % i == BigInt.zero) {
           isPrima = false;
           break;
         }
+        i += BigInt.one;
       }
     }
 
-    if (isPrima) {
-      prima = "Bilangan Prima";
-    } else {
-      prima = "Bukan Bilangan Prima";
-    }
+    String prima =
+        isPrima ? "Bilangan Prima" : "Bukan Bilangan Prima";
 
     setState(() {
-      hasil = "Angka $angkaBulat adalah $ganjilGenap dan $prima";
+      hasil = "Angka $input adalah $ganjilGenap dan $prima";
     });
   }
 
