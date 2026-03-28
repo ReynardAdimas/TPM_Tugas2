@@ -6,6 +6,7 @@ import 'package:tpm_tugas2/pages/kelompok_page.dart';
 import 'package:tpm_tugas2/pages/login_page.dart';
 import 'package:tpm_tugas2/pages/piramid_page.dart';
 import 'package:tpm_tugas2/pages/stopwatch_screen.dart';
+import 'package:tpm_tugas2/pages/umur_page.dart';
 import 'package:tpm_tugas2/pages/weton.dart';
 
 class Menu extends StatefulWidget {
@@ -17,7 +18,7 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> { 
-  final List<String> menus = ['Data Kelompok', 'Penjumlahan dan Pengurangan Angka', 'Cek paritas dan prima bilangan', 'Stopwatch', 'Hitung Luas dan Volume Piramid', 'Jumlah Total Angka'];
+  final List<String> menus = ['Data Kelompok', 'Penjumlahan dan Pengurangan Angka', 'Cek paritas dan prima bilangan', 'Stopwatch', 'Hitung Luas dan Volume Piramid', 'Jumlah Total Angka', 'Cek Umur', 'Cek Hari & Weton'];
 
   void pilihMenu(int index) {
     if(menus[index] == 'Data Kelompok') {
@@ -32,6 +33,12 @@ class _MenuState extends State<Menu> {
 
     } else if (menus[index] == 'Jumlah Total Angka') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => JumlahTotalAngkaPage()));
+    }
+    else if (menus[index] == 'Cek Umur') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => UmurPage()));
+    }
+    else if (menus[index] == 'Cek Hari & Weton') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => WetonConverterScreen()));
     }
     else {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PiramidPage()));
