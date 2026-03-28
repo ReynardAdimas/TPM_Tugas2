@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hijri/hijri_calendar.dart';
 import 'package:tpm_tugas2/pages/bilangan_page.dart';
+import 'package:tpm_tugas2/pages/hijriah.dart';
 import 'package:tpm_tugas2/pages/jumlah_kurang.dart';
 import 'package:tpm_tugas2/pages/jumlah_total_angka_page.dart';
 import 'package:tpm_tugas2/pages/kelompok_page.dart';
@@ -18,7 +20,7 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> { 
-  final List<String> menus = ['Data Kelompok', 'Penjumlahan dan Pengurangan Angka', 'Cek paritas dan prima bilangan', 'Stopwatch', 'Kalkulator Piramid', 'Jumlah Total Angka', 'Cek Umur', 'Cek Hari'];
+  final List<String> menus = ['Data Kelompok', 'Penjumlahan dan Pengurangan Angka', 'Cek paritas dan prima bilangan', 'Stopwatch', 'Kalkulator Piramid', 'Jumlah Total Angka', 'Cek Umur', 'Cek Hari', 'Konversi Hijriah'];
 
   void pilihMenu(int index) {
     if(menus[index] == 'Data Kelompok') {
@@ -32,6 +34,9 @@ class _MenuState extends State<Menu> {
       Navigator.push(context, MaterialPageRoute(builder: (context) => StopwatchScreen()));
     } else if (menus[index] == 'Jumlah Total Angka') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => JumlahTotalAngkaPage()));
+    }
+    else if (menus[index] == 'Konversi Hijriah') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => KonversiTanggalPage()));
     }
     else if (menus[index] == 'Cek Umur') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => UmurPage()));
