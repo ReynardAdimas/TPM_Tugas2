@@ -20,7 +20,7 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> { 
-  final List<String> menus = ['Data Kelompok', 'Penjumlahan dan Pengurangan Angka', 'Cek paritas dan prima bilangan', 'Stopwatch', 'Kalkulator Piramid', 'Jumlah Total Angka', 'Cek Umur', 'Cek Hari', 'Konversi Hijriah'];
+  final List<String> menus = ['Data Kelompok', 'Penjumlahan dan Pengurangan Angka', 'Cek paritas dan prima bilangan', 'Stopwatch', 'Kalkulator Piramid', 'Jumlah Total Angka', 'Cek Umur', 'Cek Hari & Weton', 'Konversi Hijriah'];
 
   void pilihMenu(int index) {
     if(menus[index] == 'Data Kelompok') {
@@ -41,7 +41,7 @@ class _MenuState extends State<Menu> {
     else if (menus[index] == 'Cek Umur') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => UmurPage()));
     }
-    else if (menus[index] == 'Cek Hari') {
+    else if (menus[index] == 'Cek Hari & Weton') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => WetonConverterScreen()));
     }
     else {

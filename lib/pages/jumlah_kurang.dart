@@ -130,9 +130,13 @@ class _JumlahKurangState extends State<JumlahKurang> {
             child: Container(
               alignment: Alignment.bottomRight,
               padding: const EdgeInsets.all(32.0),
-              child: Text(
-                _result.toString(), 
-                style: TextStyle(fontSize: 60, color: Colors.white),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                reverse: true,
+                child: Text(
+                  _result.toString(), 
+                  style: TextStyle(fontSize: 60, color: Colors.white),
+                ),
               ),
             )
           ), 
@@ -157,7 +161,7 @@ class _JumlahKurangState extends State<JumlahKurang> {
                   ),
                   child: Text(
                     buttons[index], 
-                    style: TextStyle(fontSize: 28),
+                    style: TextStyle(fontSize: 25),
                   )
                 );
               }

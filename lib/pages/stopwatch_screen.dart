@@ -16,10 +16,14 @@ class _StopwatchScreenState extends State<StopwatchScreen> {
   final List<LapRecord> _laps = []; 
   Duration _previousTotal = Duration.zero; 
 
+  Duration _offset = const Duration(hours: 0, minutes: 0, seconds: 0); 
+
+  Duration get _currentTime => _stopwatch.elapsed + _offset;
+
   void _startTimer() {
     _timer?.cancel();
     _timer = Timer.periodic(const Duration(milliseconds: 30), (timer) {
-      if (_stopwatch.elapsed.inHours >= 24) {
+      if (_currentTime.inHours >= 24) {
         _stopAndResetTimer();
       } else {
         setState(() {
@@ -41,15 +45,17 @@ class _StopwatchScreenState extends State<StopwatchScreen> {
 
   void _stopAndResetTimer() {
     _timer?.cancel(); 
+    _stopwatch.stop();
     _stopwatch.reset(); 
     setState(() {
       _laps.clear(); 
       _previousTotal = Duration.zero;
+      _offset = Duration.zero;
     });
   }
 
   void _recordLap() {
-    final currentTotal = _stopwatch.elapsed; 
+    final currentTotal = _currentTime; 
     final splitTime = currentTotal - _previousTotal; 
 
     setState(() {
@@ -71,7 +77,10 @@ class _StopwatchScreenState extends State<StopwatchScreen> {
     String seconds = (duration.inSeconds % 60).toString().padLeft(2, '0'); 
     String hundredths = ((duration.inMilliseconds % 1000) ~/ 10).toString().padLeft(2, '0'); 
 
-    if (isMainTime && !_stopwatch.isRunning && _stopwatch.elapsedTicks == 0) {
+    // if (isMainTime && !_stopwatch.isRunning && _stopwatch.elapsedTicks == 0) {
+    //   return "$hours:$minutes:$seconds.0";
+    // } 
+    if (isMainTime && !_stopwatch.isRunning && duration == _offset) {
       return "$hours:$minutes:$seconds.0";
     } 
     return "$hours:$minutes:$seconds.$hundredths";
@@ -108,7 +117,7 @@ class _StopwatchScreenState extends State<StopwatchScreen> {
               flex: 3,
               child: Center(
                 child: Text(
-                  _formatTime(_stopwatch.elapsed, isMainTime: true), 
+                  _formatTime(_currentTime, isMainTime: true), 
                   style: const TextStyle(
                     fontSize: 72, 
                     fontWeight: FontWeight.w300, 
@@ -159,7 +168,8 @@ class _StopwatchScreenState extends State<StopwatchScreen> {
     );
   }
   Widget _buildControlButtons() {
-    final bool isInitial = !_stopwatch.isRunning && _stopwatch.elapsedTicks == 0; 
+    // final bool isInitial = !_stopwatch.isRunning && _stopwatch.elapsedTicks == 0; 
+    final bool isInitial = !_stopwatch.isRunning && _currentTime == _offset;
     final bool isRunning = _stopwatch.isRunning; 
 
     if (isInitial) {
